@@ -4,14 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رحلات الغردقة | Holidays Hurghada</title>
+    <title>رحلات مصر | حجز رحلات سياحية</title>
 
-    <!-- Google Fonts: Cairo for modern Arabic typography -->
+    <!-- Meta Description -->
+    <meta name="description"
+        content="أفضل موقع لحجز رحلات السياحة في مصر والغردقة. حجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار مع رحلات مصر.">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+
+    <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -20,16 +28,13 @@
             /* Sea Blue */
             --secondary-color: #fbc02d;
             /* Sun/Sand Yellow */
-            --accent-color: #e91e63;
-            /* Accent for actions */
+            --whatsapp-color: #25d366;
             --dark-color: #1a237e;
-            /* Deep Blue for text/footers */
-            --light-bg: #f5f7fa;
+            --light-bg: #f0f4f8;
             --white: #ffffff;
             --text-color: #333333;
-            --gray-text: #666666;
             --border-radius: 12px;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -65,42 +70,10 @@
             object-fit: cover;
         }
 
-        /* Utility Classes */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--dark-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
         }
 
         .section-title {
@@ -152,11 +125,21 @@
             color: var(--secondary-color);
         }
 
-        .top-links span {
-            margin-left: 15px;
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        /* --- Header & Navigation --- */
+        .lang-switch select {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+        }
+
+        /* --- Header --- */
         header {
             background-color: var(--white);
             box-shadow: var(--shadow);
@@ -225,8 +208,8 @@
 
         /* --- Hero Section --- */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://picsum.photos/seed/hurghada_sea/1920/1080.jpg');
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/egypt_desert/1920/1080.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -246,25 +229,17 @@
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* --- Layout Grid (Main + Sidebar) --- */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+        /* --- Booking Card Styles (Not Blog) --- */
+        .category-section {
+            margin-bottom: 80px;
         }
 
-        /* --- Card Styles --- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 30px;
         }
 
         .trip-card {
@@ -275,6 +250,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            border: 1px solid #eee;
         }
 
         .trip-card:hover {
@@ -285,16 +261,27 @@
         .card-img {
             height: 200px;
             position: relative;
+            overflow: hidden;
         }
 
-        .card-category {
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .trip-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
             position: absolute;
             top: 15px;
             right: 15px;
             background-color: var(--secondary-color);
             color: var(--dark-color);
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 700;
         }
@@ -304,60 +291,60 @@
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-        }
-
-        .card-meta {
-            font-size: 0.8rem;
-            color: var(--gray-text);
-            margin-bottom: 10px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .card-meta i {
-            color: var(--primary-color);
-            margin-left: 5px;
+            text-align: center;
         }
 
         .card-title {
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--dark-color);
         }
 
-        .card-excerpt {
-            font-size: 0.9rem;
-            color: var(--gray-text);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .card-footer {
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .read-more {
+        .trip-price {
+            font-size: 1.3rem;
             color: var(--primary-color);
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .read-more:hover {
-            color: var(--dark-color);
+        .trip-price span {
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 400;
+        }
+
+        .btn-book {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .btn-book:hover {
+            background-color: var(--dark-color);
         }
 
         /* --- Sidebar Widgets --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
         .widget {
             background: var(--white);
             padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .widget-title {
@@ -365,13 +352,13 @@
             font-weight: 700;
             color: var(--dark-color);
             border-right: 4px solid var(--secondary-color);
-            padding-right: 15px;
+            display: inline-block;
+            padding-right: 10px;
             margin-bottom: 20px;
         }
 
         /* Weather Widget */
         .weather-widget {
-            text-align: center;
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
         }
@@ -382,159 +369,9 @@
         }
 
         .weather-temp {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin: 10px 0;
-        }
-
-        .weather-details {
-            display: flex;
-            justify-content: space-around;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .forecast {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-size: 0.8rem;
-        }
-
-        .forecast-day {
-            text-align: center;
-        }
-
-        /* Recent Posts Widget */
-        .recent-post {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 15px;
-        }
-
-        .recent-post:last-child {
-            border: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .recent-post img {
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .recent-post h4 {
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-
-        .recent-post span {
-            font-size: 0.8rem;
-            color: var(--gray-text);
-        }
-
-        /* --- Video Section --- */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .video-card {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            cursor: pointer;
-        }
-
-        .video-card img {
-            width: 100%;
-            height: 100%;
-            transition: var(--transition);
-        }
-
-        .video-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .video-card:hover .play-overlay {
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .play-btn {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-        }
-
-        .video-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* --- Pagination --- */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .page-link {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .page-link:hover,
-        .page-link.active {
-            background: var(--primary-color);
-            color: white;
         }
 
         /* --- Footer --- */
@@ -572,66 +409,44 @@
 
         .contact-info i {
             color: var(--secondary-color);
-            width: 20px;
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
             text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .lang-switch select {
-            padding: 5px 10px;
-            border-radius: 4px;
-            border: none;
-        }
-
-        .back-to-top {
+        /* --- WhatsApp Floating Button --- */
+        .whatsapp-float {
             position: fixed;
+            width: 60px;
+            height: 60px;
             bottom: 30px;
-            right: 30px;
-            /* RTL context: Right side */
-            background: var(--secondary-color);
-            color: var(--dark-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            left: 30px;
+            /* Fixed on the left as requested */
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
             transition: var(--transition);
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: white;
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
         }
 
         /* Responsive Design */
         @media (max-width: 992px) {
             .content-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2rem;
             }
         }
 
@@ -641,29 +456,32 @@
             }
 
             .nav-links {
-                position: fixed;
+                display: none;
+                flex-direction: column;
+                position: absolute;
                 top: 80px;
-                left: 0;
+                right: 0;
                 width: 100%;
                 background: var(--white);
-                flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                display: none;
-                text-align: center;
             }
 
             .nav-links.active {
                 display: flex;
             }
 
-            .top-bar {
-                display: none;
-                /* Hide top bar on mobile for cleaner look */
+            .hero-content h1 {
+                font-size: 2rem;
             }
 
-            .footer-bottom {
-                flex-direction: column;
+            /* On mobile, move whatsapp slightly to not cover content if needed, or keep left */
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
             }
         }
     </style>
@@ -677,503 +495,11 @@
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="top-links">
-                <span><i class="fas fa-random"></i> مقال عشوائي</span>
-                <span><i class="fas fa-search"></i> بحث عن</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-umbrella-beach"></i>
-                    <span>رحلات الغردقة</span>
-                </div>
-                <div class="nav-links" id="navLinks">
-                    <a href="#" class="active">الرئيسية</a>
-                    <a href="#">الفنادق</a>
-                    <a href="#">رحلات متنوعة</a>
-                    <a href="#">رحلات الغواصات</a>
-                    <a href="#">الرحلات البحرية</a>
-                </div>
-                <div class="mobile-menu-btn" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="header-search desktop-only">
-                    <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i> بحث</button>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>تابع معنا أفضل البرامج السياحية</h1>
-            <p>استمتع بافضل الرحلات البحرية ورحلات السفارى والانشطة الترفيهية وعيش اجازة لا تنسى فى مدينة الغردقة</p>
-            <a href="#trips" class="btn btn-primary">تصفح الرحلات</a>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <div class="container content-grid" id="trips">
-
-        <!-- Main Column -->
-        <main>
-
-            <!-- Sea Trips Section -->
-            <section class="category-section">
-                <div class="section-title">
-                    <h2>الرحلات البحرية</h2>
-                </div>
-
-                <div class="card-grid">
-                    <!-- Card 1 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/piratesboat/400/300" alt="Pirates Boat">
-                            <span class="card-category">بحرية</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 5,018</span>
-                            </div>
-                            <h3 class="card-title">رحلة المركب الشراعى البايرتس Pirates Boat</h3>
-                            <p class="card-excerpt">استمتع بتجربة فريدة على متن مركب القراصنة مع العروض الترفيهية
-                                والغطس.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 2 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
-                            <span class="card-category">جزر</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 5,018</span>
-                            </div>
-                            <h3 class="card-title">حجز رحلة جزيرة هولا هولا بافضل الاسعار</h3>
-                            <p class="card-excerpt">رحلة جزيرة هولا هولة المميزة، السباحة في المياه الصافية والاسترخاء
-                                على الشاطئ.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 3 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/dolphin/400/300" alt="Dolphin House">
-                            <span class="card-category">دلافين</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 15 ديسمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 0</span>
-                            </div>
-                            <h3 class="card-title">رحلة الدولفين هاوس الغردقة</h3>
-                            <p class="card-excerpt">السباحة مع الدلافين في منزلها الطبيعي، تجربة لا تنسى للعائلات.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 4 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/orangeisland/400/300" alt="Orange Island">
-                            <span class="card-category">جزر</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 3 نوفمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 0</span>
-                            </div>
-                            <h3 class="card-title">رحلة جزيرة اورانج Orange Island</h3>
-                            <p class="card-excerpt">اكتشف جمال جزيرة أورانج مع وجبة غداء فاخرة ومشروبات.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="pagination">
-                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
-                    <a href="#" class="page-link">1</a>
-                    <a href="#" class="page-link">2</a>
-                    <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
-                </div>
-            </section>
-
-            <!-- Submarine Section -->
-            <section class="category-section" style="margin-top: 60px;">
-                <div class="section-title">
-                    <h2>رحلات الغواصات</h2>
-                </div>
-
-                <div class="card-grid">
-                    <!-- Sub 1 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/submarine1/400/300" alt="Panorama Submarine">
-                            <span class="card-category">غواصات</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 27 أكتوبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 19,023</span>
-                            </div>
-                            <h3 class="card-title">رحلة الغواصة بانوراما Panorama Submarine</h3>
-                            <p class="card-excerpt">استكشف الحياة البحرية في البحر الأحمر دون أن تبتل قدميك.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Sub 2 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/seascope/400/300" alt="Sea Scope">
-                            <span class="card-category">غواصات</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 1 مارس، 2025</span>
-                                <span><i class="far fa-eye"></i> 0</span>
-                            </div>
-                            <h3 class="card-title">حجز رحلة غواصة سى سكوب الغردقة</h3>
-                            <p class="card-excerpt">رحلة سي سكوب المميزة لمشاهدة الشعب المرجانية الملونة.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Sub 3 -->
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/sindbad/400/300" alt="Sindbad">
-                            <span class="card-category">غواصات</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
-                            </div>
-                            <h3 class="card-title">رحلة غواصة السندباد Sindbad</h3>
-                            <p class="card-excerpt">أشهر غواصة سياحية في الغردقة بأفضل الأسعار.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Safari Section -->
-            <section class="category-section" style="margin-top: 60px;">
-                <div class="section-title">
-                    <h2>السفارى</h2>
-                </div>
-
-                <div class="card-grid">
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/safari1/400/300" alt="Discovery Safari">
-                            <span class="card-category">صحراء</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 8 نوفمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 2,414</span>
-                            </div>
-                            <h3 class="card-title">رحلة ديسكفرى سفارى 5 ساعات</h3>
-                            <p class="card-excerpt">استمتع بيوم ولا اروع بين جبال الغردقة الساحرة وقيادة البيتش باجى.
-                            </p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">أكمل القراءة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/safari2/400/300" alt="Moto Safari">
-                            <span class="card-category">موتوكروس</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 7 نوفمبر، 2021</span>
-                            </div>
-                            <h3 class="card-title">رحلة موتو سفارى 3 ساعات Moto Safari</h3>
-                            <p class="card-excerpt">رحلة مثيرة لتجربة ركوب الدراجات البخارية في الصحراء.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">أكمل القراءة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Video Section -->
-            <section class="videos-section" style="margin-top: 60px;">
-                <div class="section-title">
-                    <h2>فيديوهات مميزة</h2>
-                </div>
-                <div class="video-grid">
-                    <div class="video-card">
-                        <img src="https://picsum.photos/seed/video1/400/225" alt="Dolphin Show">
-                        <div class="play-overlay">
-                            <div class="play-btn"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">دولفين شو الغردقة 04:06</div>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <img src="https://picsum.photos/seed/video2/400/225" alt="Super Safari">
-                        <div class="play-overlay">
-                            <div class="play-btn"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">رحلة السوبر سفارى 02:10</div>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <img src="https://picsum.photos/seed/video3/400/225" alt="Aquarium">
-                        <div class="play-overlay">
-                            <div class="play-btn"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">جراند اكويريوم 01:49</div>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <img src="https://picsum.photos/seed/video4/400/225" alt="Grand Aquarium">
-                        <div class="play-overlay">
-                            <div class="play-btn"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">السباحة مع القروش 15:08</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Varied Trips Section -->
-            <section class="category-section" style="margin-top: 60px;">
-                <div class="section-title">
-                    <h2>رحلات متنوعة</h2>
-                </div>
-                <div class="card-grid">
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/aquarium/400/300" alt="Grand Aquarium">
-                            <span class="card-category">ترفيه</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 18 نوفمبر، 2021</span>
-                                <span><i class="far fa-eye"></i> 120,897</span>
-                            </div>
-                            <h3 class="card-title">جراند اكواريوم الغردقة</h3>
-                            <p class="card-excerpt">زيارة أكبر حوض مائي في مصر ومشاهدة أسماك القرش.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز التذاكر <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/jungle/400/300" alt="Jungle Aqua Park">
-                            <span class="card-category">ملاهي</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 28 ديسمبر، 2021</span>
-                            </div>
-                            <h3 class="card-title">رحلة جانجل اكوابارك الغردقة</h3>
-                            <p class="card-excerpt">أفضل مكان للأطفال والعائلات للاستمتاع بالألعاب المائية.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز التذاكر <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/horses/400/300" alt="Horses">
-                            <span class="card-category">خيول</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-meta">
-                                <span><i class="far fa-calendar-alt"></i> 20 مارس، 2025</span>
-                            </div>
-                            <h3 class="card-title">رحلات الخيل والجمال</h3>
-                            <p class="card-excerpt">جولة على ظهور الخيل أو الجمال عند غروب الشمس.</p>
-                            <div class="card-footer">
-                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Sidebar -->
-        <aside>
-            <!-- Weather Widget -->
-            <div class="widget weather-widget">
-                <div class="widget-title">الطقس - الغردقة</div>
-                <div class="weather-main">
-                    <div style="font-size: 1.5rem;"><i class="fas fa-sun"></i> سماء صافية</div>
-                    <div class="weather-temp">70℉</div>
-                    <div>70º - 62º</div>
-                </div>
-                <div class="weather-details">
-                    <span><i class="fas fa-tint"></i> 46%</span>
-                    <span><i class="fas fa-wind"></i> 5.75 ميل/س</span>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-day">
-                        <div>أربعاء</div>
-                        <strong>68℉</strong>
-                    </div>
-                    <div class="forecast-day">
-                        <div>خميس</div>
-                        <strong>75℉</strong>
-                    </div>
-                    <div class="forecast-day">
-                        <div>جمعة</div>
-                        <strong>70℉</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Widget -->
-            <div class="widget">
-                <div class="widget-title">عن الموقع</div>
-                <p style="font-size: 0.9rem; color: #666;">
-                    موقع رحلات الغردقة - هوليدايز هورجادا. استمتع معنا بافضل الرحلات البحرية ورحلات السفارى والانشطة
-                    الترفيهية وعيش اجازة لا تنسى.
-                </p>
-                <div style="margin-top: 15px;">
-                    <img src="https://picsum.photos/seed/team/300/200" alt="Team"
-                        style="border-radius: 8px; margin-bottom: 10px;">
-                    <p style="font-size: 0.85rem; font-weight: bold;">فريق عمل موقع رحلات الغردقة</p>
-                </div>
-            </div>
-
-            <!-- Recent Posts Widget -->
-            <div class="widget">
-                <div class="widget-title">الأخيرة</div>
-
-                <div class="recent-post">
-                    <img src="https://picsum.photos/seed/hotel/100/100" alt="Post">
-                    <div>
-                        <h4>فندق هاواى سيزر بالاس</h4>
-                        <span>14 نوفمبر، 2021</span>
-                    </div>
-                </div>
-
-                <div class="recent-post">
-                    <img src="https://picsum.photos/seed/watergames/100/100" alt="Post">
-                    <div>
-                        <h4>الألعاب المائية الكوادرا</h4>
-                        <span>28 ديسمبر، 2021</span>
-                    </div>
-                </div>
-
-                <div class="recent-post">
-                    <img src="https://picsum.photos/seed/parasailing/100/100" alt="Post">
-                    <div>
-                        <h4>رحلة الباراشوت</h4>
-                        <span>8 نوفمبر، 2021</span>
-                    </div>
-                </div>
-
-                <div class="recent-post">
-                    <img src="https://picsum.photos/seed/dolphinshow/100/100" alt="Post">
-                    <div>
-                        <h4>رحلة الدولفين شو</h4>
-                        <span>28 نوفمبر، 2021</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ads / Tags Placeholder -->
-            <div class="widget" style="background-color: #e3f2fd; text-align: center;">
-                <div class="widget-title" style="border-color: var(--primary-color);">الإعلانات</div>
-                <p style="font-size: 0.85rem; color: #555;">مساحة إعلانية</p>
-                <p style="font-size: 0.8rem; color: #777; margin-bottom: 10px;">سعر رحلة السفارى | حجز رحلات الغردقة |
-                    رحلات البحر</p>
-                <button class="btn btn-primary" style="font-size: 0.8rem;">تواصل معنا</button>
-            </div>
-        </aside>
-
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- About -->
-                <div class="footer-col">
-                    <h3>رحلات الغردقة</h3>
-                    <p>أفضل موقع لحجز الرحلات السياحية في الغردقة. نقدم مجموعة واسعة من الرحلات البحرية، الصحراوية،
-                        والترفيهية بأفضل الأسعار.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="footer-col">
-                    <h3>روابط هامة</h3>
-                    <ul class="contact-info">
-                        <li><a href="#"><i class="fas fa-angle-left"></i> الرحلات البحرية</a></li>
-                        <li><a href="#"><i class="fas fa-angle-left"></i> رحلات السفارى</a></li>
-                        <li><a href="#"><i class="fas fa-angle-left"></i> رحلات الغواصات</a></li>
-                        <li><a href="#"><i class="fas fa-angle-left"></i> اجمل فنادق الغردقة</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> الغردقة - شارع شيراتون، البحر الأحمر</li>
-                        <li><i class="fas fa-phone"></i> +201061061785</li>
-                        <li><i class="fas fa-phone"></i> +201553090535</li>
-                        <li><i class="fas fa-envelope"></i> info@holidays-hurghada.com</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 رحلات الغردقة. جميع الحقوق محفوظة.</p>
+            <div class="top-actions">
+                <!-- Language Switcher at Top -->
                 <div class="lang-switch">
                     <select>
                         <option value="ar" selected>العربية</option>
@@ -1185,37 +511,384 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- Simple JavaScript for interactions -->
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>رحلات مصر</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#" class="active">الرئيسية</a>
+                    <a href="#sea">الرحلات البحرية</a>
+                    <a href="#safari">رحلات السفاري</a>
+                    <a href="#submarine">رحلات الغواصات</a>
+                    <a href="#varied">رحلات متنوعة</a>
+                </div>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>اكتشف جمال مصر معنا</h1>
+            <p>نقدم لك أفضل تجارب السفر والسياحة في الغردقة ومصر بأفضل الأسعار</p>
+            <a href="#sea" class="btn"
+                style="background:var(--secondary-color); color:var(--dark-color); padding:10px 30px; border-radius:50px; font-weight:bold;">تصفح
+                الرحلات</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container content-grid">
+
+        <!-- Main Column -->
+        <main>
+
+            <!-- Sea Trips Category -->
+            <section class="category-section" id="sea">
+                <div class="section-title">
+                    <h2>الرحلات البحرية</h2>
+                </div>
+                <div class="card-grid">
+                    <!-- Item 1 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة المركب الشراعى البايرتس</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة المركب الشراعى البايرتس')">احجز
+                                الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/dolphinhouse/400/300" alt="Dolphin House">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة الدولفين هاوس</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة الدولفين هاوس')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/diving/400/300" alt="Diving">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة الغوص Diving</h3>
+                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة الغوص')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة جزيرة هولا هولا</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة جزيرة هولا هولا')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/paradise/400/300" alt="Paradise Island">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة جزيرة بارادايس مع رد سى دولفين</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة جزيرة بارادايس')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة جزيرة اورانج Orange Island</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة جزيرة اورانج')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 7 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/orange2/400/300" alt="Orange Happy Dolphin">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة جزيرة اورانج مع غواصة هابى دولفين 2×1</h3>
+                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('جزيرة اورانج مع هابى دولفين')">احجز
+                                الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 8 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/parasailing/400/300" alt="Parasailing">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة الباراشوت parasailing</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة الباراشوت')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 9 -->
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/banana/400/300" alt="Water Games">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">الالعاب المائية الكوادرا والبنانا بوت</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('الالعاب المائية')">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Safari Trips Category -->
+            <section class="category-section" id="safari">
+                <div class="section-title">
+                    <h2>رحلات السفاري</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/supersafari/400/300" alt="Super Safari">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة السوبر سفارى Super Safari</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('رحلة السوبر سفارى')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/disc5h/400/300" alt="Discovery 5h">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة ديسكفرى سفارى 5 ساعات</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('ديسكفرى سفارى 5 ساعات')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/disc3h/400/300" alt="Discovery 3h">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة ديسكفرى سفارى 3 ساعات</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('ديسكفرى سفارى 3 ساعات')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/motosafari/400/300" alt="Moto Safari">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة موتو سفارى 3 ساعات Moto Safari</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('موتو سفارى 3 ساعات')">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submarine Trips Category -->
+            <section class="category-section" id="submarine">
+                <div class="section-title">
+                    <h2>رحلات الغواصات</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/panorama/400/300" alt="Panorama Submarine">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة الغواصة بانوراما Panorama Submarine</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('غواصة بانوراما')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/seawolf/400/300" alt="Panorama Sea Wolf">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة غواصة بانوراما سى وولف خليج مكادى</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('بانوراما سى وولف')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/sindbad/400/300" alt="Sindbad Submarine">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة غواصة السندباد Sindbad Submarine</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('غواصة السندباد')">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Varied Trips Category -->
+            <section class="category-section" id="varied">
+                <div class="section-title">
+                    <h2>رحلات متنوعة</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/dolphinshow/400/300" alt="Dolphin Show">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة الدولفين شو Dolphin show</h3>
+                            <div class="trip-price">$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('الدولفين شو')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/grandaquarium/400/300" alt="Grand Aquarium">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">جراند اكواريوم الغردقة</h3>
+                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('جراند اكواريوم')">احجز الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/jungle/400/300" alt="Jungle Aqua Park">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة جانجل اكوابارك الغردقة</h3>
+                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
+                            <button class="btn-book" onclick="openBooking('جانجل اكوابارك')">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <!-- Weather Widget -->
+            <div class="widget weather-widget">
+                <div class="widget-title">حالة الطقس</div>
+                <div style="font-size: 0.9rem;">الغردقة، مصر</div>
+                <div class="weather-temp">70℉</div>
+                <div style="font-size: 0.8rem;">سماء صافية</div>
+            </div>
+
+            <!-- Contact Info Widget -->
+            <div class="widget">
+                <div class="widget-title">تواصل معنا</div>
+                <ul class="contact-info" style="text-align: right;">
+                    <li><i class="fas fa-phone"></i> +201061061785</li>
+                    <li><i class="fas fa-phone"></i> +201553090535</li>
+                    <li><i class="fas fa-envelope"></i> info@holidays-hurghada.com</li>
+                </ul>
+            </div>
+
+            <!-- Why Us Widget -->
+            <div class="widget">
+                <div class="widget-title">لماذا تختارنا؟</div>
+                <ul style="text-align: right; font-size: 0.9rem; color: #555;">
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                            style="color:green; margin-left:5px;"></i> أفضل الأسعار المضمونة</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                            style="color:green; margin-left:5px;"></i> دعم فني 24/7</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                            style="color:green; margin-left:5px;"></i> باصات مكيفة حديثة</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                            style="color:green; margin-left:5px;"></i> مرشدين سياحيين محترفين</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>رحلات مصر</h3>
+                    <p>بوابتك لاستكشاف أجمل الأماكن السياحية في مصر. نضمن لك تجربة لا تنسى مع أفضل الخدمات والأسعار.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="contact-info">
+                        <li><a href="#sea">الرحلات البحرية</a></li>
+                        <li><a href="#safari">رحلات السفاري</a></li>
+                        <li><a href="#submarine">رحلات الغواصات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>العنوان</h3>
+                    <p>الغردقة - شارع شيراتون</p>
+                    <p>البحر الأحمر - مصر</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 رحلات مصر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/201061061785" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-        // Mobile Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
-        // Back to Top Functionality
-        const backToTopBtn = document.querySelector('.back-to-top');
-
-        window.onscroll = function () {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        };
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        function openBooking(tripName) {
+            // In a real app, this would open a modal or redirect
+            // Here we simulate opening WhatsApp for booking
+            const message = encodeURIComponent(`أريد حجز رحلة: ${tripName}`);
+            const whatsappUrl = `https://wa.me/201061061785?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
