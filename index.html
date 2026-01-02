@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلات الغردقة | Holidays Hurghada</title>
+
+    <!-- Google Fonts: Cairo for modern Arabic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0288d1;
+            /* Sea Blue */
+            --secondary-color: #fbc02d;
+            /* Sun/Sand Yellow */
+            --accent-color: #e91e63;
+            /* Accent for actions */
+            --dark-color: #1a237e;
+            /* Deep Blue for text/footers */
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+            --text-color: #333333;
+            --gray-text: #666666;
+            --border-radius: 12px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            margin-left: 15px;
+            font-size: 1.1rem;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+        .top-links span {
+            margin-left: 15px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://picsum.photos/seed/hurghada_sea/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Layout Grid (Main + Sidebar) --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* --- Card Styles --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .trip-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            position: relative;
+        }
+
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            margin-bottom: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .card-meta i {
+            color: var(--primary-color);
+            margin-left: 5px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            color: var(--dark-color);
+        }
+
+        /* --- Sidebar Widgets --- */
+        .widget {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            border-right: 4px solid var(--secondary-color);
+            padding-right: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            text-align: center;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .weather-widget .widget-title {
+            color: white;
+            border-color: white;
+        }
+
+        .weather-temp {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .weather-details {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .forecast {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        .forecast-day {
+            text-align: center;
+        }
+
+        /* Recent Posts Widget */
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        .recent-post:last-child {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .recent-post img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .recent-post h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .recent-post span {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+        }
+
+        /* --- Video Section --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .video-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        .video-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- Pagination --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-info i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .lang-switch select {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            /* RTL context: Right side */
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                display: none;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .top-bar {
+                display: none;
+                /* Hide top bar on mobile for cleaner look */
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="top-links">
+                <span><i class="fas fa-random"></i> مقال عشوائي</span>
+                <span><i class="fas fa-search"></i> بحث عن</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <span>رحلات الغردقة</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#" class="active">الرئيسية</a>
+                    <a href="#">الفنادق</a>
+                    <a href="#">رحلات متنوعة</a>
+                    <a href="#">رحلات الغواصات</a>
+                    <a href="#">الرحلات البحرية</a>
+                </div>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="header-search desktop-only">
+                    <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i> بحث</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>تابع معنا أفضل البرامج السياحية</h1>
+            <p>استمتع بافضل الرحلات البحرية ورحلات السفارى والانشطة الترفيهية وعيش اجازة لا تنسى فى مدينة الغردقة</p>
+            <a href="#trips" class="btn btn-primary">تصفح الرحلات</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container content-grid" id="trips">
+
+        <!-- Main Column -->
+        <main>
+
+            <!-- Sea Trips Section -->
+            <section class="category-section">
+                <div class="section-title">
+                    <h2>الرحلات البحرية</h2>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Card 1 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/piratesboat/400/300" alt="Pirates Boat">
+                            <span class="card-category">بحرية</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 5,018</span>
+                            </div>
+                            <h3 class="card-title">رحلة المركب الشراعى البايرتس Pirates Boat</h3>
+                            <p class="card-excerpt">استمتع بتجربة فريدة على متن مركب القراصنة مع العروض الترفيهية
+                                والغطس.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
+                            <span class="card-category">جزر</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 5,018</span>
+                            </div>
+                            <h3 class="card-title">حجز رحلة جزيرة هولا هولا بافضل الاسعار</h3>
+                            <p class="card-excerpt">رحلة جزيرة هولا هولة المميزة، السباحة في المياه الصافية والاسترخاء
+                                على الشاطئ.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/dolphin/400/300" alt="Dolphin House">
+                            <span class="card-category">دلافين</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 15 ديسمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 0</span>
+                            </div>
+                            <h3 class="card-title">رحلة الدولفين هاوس الغردقة</h3>
+                            <p class="card-excerpt">السباحة مع الدلافين في منزلها الطبيعي، تجربة لا تنسى للعائلات.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/orangeisland/400/300" alt="Orange Island">
+                            <span class="card-category">جزر</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 3 نوفمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 0</span>
+                            </div>
+                            <h3 class="card-title">رحلة جزيرة اورانج Orange Island</h3>
+                            <p class="card-excerpt">اكتشف جمال جزيرة أورانج مع وجبة غداء فاخرة ومشروبات.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="page-link">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
+                </div>
+            </section>
+
+            <!-- Submarine Section -->
+            <section class="category-section" style="margin-top: 60px;">
+                <div class="section-title">
+                    <h2>رحلات الغواصات</h2>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Sub 1 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/submarine1/400/300" alt="Panorama Submarine">
+                            <span class="card-category">غواصات</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 27 أكتوبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 19,023</span>
+                            </div>
+                            <h3 class="card-title">رحلة الغواصة بانوراما Panorama Submarine</h3>
+                            <p class="card-excerpt">استكشف الحياة البحرية في البحر الأحمر دون أن تبتل قدميك.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sub 2 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/seascope/400/300" alt="Sea Scope">
+                            <span class="card-category">غواصات</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 1 مارس، 2025</span>
+                                <span><i class="far fa-eye"></i> 0</span>
+                            </div>
+                            <h3 class="card-title">حجز رحلة غواصة سى سكوب الغردقة</h3>
+                            <p class="card-excerpt">رحلة سي سكوب المميزة لمشاهدة الشعب المرجانية الملونة.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sub 3 -->
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/sindbad/400/300" alt="Sindbad">
+                            <span class="card-category">غواصات</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 14 نوفمبر، 2021</span>
+                            </div>
+                            <h3 class="card-title">رحلة غواصة السندباد Sindbad</h3>
+                            <p class="card-excerpt">أشهر غواصة سياحية في الغردقة بأفضل الأسعار.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Safari Section -->
+            <section class="category-section" style="margin-top: 60px;">
+                <div class="section-title">
+                    <h2>السفارى</h2>
+                </div>
+
+                <div class="card-grid">
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/safari1/400/300" alt="Discovery Safari">
+                            <span class="card-category">صحراء</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 8 نوفمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 2,414</span>
+                            </div>
+                            <h3 class="card-title">رحلة ديسكفرى سفارى 5 ساعات</h3>
+                            <p class="card-excerpt">استمتع بيوم ولا اروع بين جبال الغردقة الساحرة وقيادة البيتش باجى.
+                            </p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">أكمل القراءة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/safari2/400/300" alt="Moto Safari">
+                            <span class="card-category">موتوكروس</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 7 نوفمبر، 2021</span>
+                            </div>
+                            <h3 class="card-title">رحلة موتو سفارى 3 ساعات Moto Safari</h3>
+                            <p class="card-excerpt">رحلة مثيرة لتجربة ركوب الدراجات البخارية في الصحراء.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">أكمل القراءة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Video Section -->
+            <section class="videos-section" style="margin-top: 60px;">
+                <div class="section-title">
+                    <h2>فيديوهات مميزة</h2>
+                </div>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <img src="https://picsum.photos/seed/video1/400/225" alt="Dolphin Show">
+                        <div class="play-overlay">
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">دولفين شو الغردقة 04:06</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="https://picsum.photos/seed/video2/400/225" alt="Super Safari">
+                        <div class="play-overlay">
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">رحلة السوبر سفارى 02:10</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="https://picsum.photos/seed/video3/400/225" alt="Aquarium">
+                        <div class="play-overlay">
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">جراند اكويريوم 01:49</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="https://picsum.photos/seed/video4/400/225" alt="Grand Aquarium">
+                        <div class="play-overlay">
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">السباحة مع القروش 15:08</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Varied Trips Section -->
+            <section class="category-section" style="margin-top: 60px;">
+                <div class="section-title">
+                    <h2>رحلات متنوعة</h2>
+                </div>
+                <div class="card-grid">
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/aquarium/400/300" alt="Grand Aquarium">
+                            <span class="card-category">ترفيه</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 18 نوفمبر، 2021</span>
+                                <span><i class="far fa-eye"></i> 120,897</span>
+                            </div>
+                            <h3 class="card-title">جراند اكواريوم الغردقة</h3>
+                            <p class="card-excerpt">زيارة أكبر حوض مائي في مصر ومشاهدة أسماك القرش.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز التذاكر <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/jungle/400/300" alt="Jungle Aqua Park">
+                            <span class="card-category">ملاهي</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 28 ديسمبر، 2021</span>
+                            </div>
+                            <h3 class="card-title">رحلة جانجل اكوابارك الغردقة</h3>
+                            <p class="card-excerpt">أفضل مكان للأطفال والعائلات للاستمتاع بالألعاب المائية.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز التذاكر <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="trip-card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/horses/400/300" alt="Horses">
+                            <span class="card-category">خيول</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 20 مارس، 2025</span>
+                            </div>
+                            <h3 class="card-title">رحلات الخيل والجمال</h3>
+                            <p class="card-excerpt">جولة على ظهور الخيل أو الجمال عند غروب الشمس.</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more">حجز الرحلة <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <!-- Weather Widget -->
+            <div class="widget weather-widget">
+                <div class="widget-title">الطقس - الغردقة</div>
+                <div class="weather-main">
+                    <div style="font-size: 1.5rem;"><i class="fas fa-sun"></i> سماء صافية</div>
+                    <div class="weather-temp">70℉</div>
+                    <div>70º - 62º</div>
+                </div>
+                <div class="weather-details">
+                    <span><i class="fas fa-tint"></i> 46%</span>
+                    <span><i class="fas fa-wind"></i> 5.75 ميل/س</span>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-day">
+                        <div>أربعاء</div>
+                        <strong>68℉</strong>
+                    </div>
+                    <div class="forecast-day">
+                        <div>خميس</div>
+                        <strong>75℉</strong>
+                    </div>
+                    <div class="forecast-day">
+                        <div>جمعة</div>
+                        <strong>70℉</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Widget -->
+            <div class="widget">
+                <div class="widget-title">عن الموقع</div>
+                <p style="font-size: 0.9rem; color: #666;">
+                    موقع رحلات الغردقة - هوليدايز هورجادا. استمتع معنا بافضل الرحلات البحرية ورحلات السفارى والانشطة
+                    الترفيهية وعيش اجازة لا تنسى.
+                </p>
+                <div style="margin-top: 15px;">
+                    <img src="https://picsum.photos/seed/team/300/200" alt="Team"
+                        style="border-radius: 8px; margin-bottom: 10px;">
+                    <p style="font-size: 0.85rem; font-weight: bold;">فريق عمل موقع رحلات الغردقة</p>
+                </div>
+            </div>
+
+            <!-- Recent Posts Widget -->
+            <div class="widget">
+                <div class="widget-title">الأخيرة</div>
+
+                <div class="recent-post">
+                    <img src="https://picsum.photos/seed/hotel/100/100" alt="Post">
+                    <div>
+                        <h4>فندق هاواى سيزر بالاس</h4>
+                        <span>14 نوفمبر، 2021</span>
+                    </div>
+                </div>
+
+                <div class="recent-post">
+                    <img src="https://picsum.photos/seed/watergames/100/100" alt="Post">
+                    <div>
+                        <h4>الألعاب المائية الكوادرا</h4>
+                        <span>28 ديسمبر، 2021</span>
+                    </div>
+                </div>
+
+                <div class="recent-post">
+                    <img src="https://picsum.photos/seed/parasailing/100/100" alt="Post">
+                    <div>
+                        <h4>رحلة الباراشوت</h4>
+                        <span>8 نوفمبر، 2021</span>
+                    </div>
+                </div>
+
+                <div class="recent-post">
+                    <img src="https://picsum.photos/seed/dolphinshow/100/100" alt="Post">
+                    <div>
+                        <h4>رحلة الدولفين شو</h4>
+                        <span>28 نوفمبر، 2021</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ads / Tags Placeholder -->
+            <div class="widget" style="background-color: #e3f2fd; text-align: center;">
+                <div class="widget-title" style="border-color: var(--primary-color);">الإعلانات</div>
+                <p style="font-size: 0.85rem; color: #555;">مساحة إعلانية</p>
+                <p style="font-size: 0.8rem; color: #777; margin-bottom: 10px;">سعر رحلة السفارى | حجز رحلات الغردقة |
+                    رحلات البحر</p>
+                <button class="btn btn-primary" style="font-size: 0.8rem;">تواصل معنا</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About -->
+                <div class="footer-col">
+                    <h3>رحلات الغردقة</h3>
+                    <p>أفضل موقع لحجز الرحلات السياحية في الغردقة. نقدم مجموعة واسعة من الرحلات البحرية، الصحراوية،
+                        والترفيهية بأفضل الأسعار.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h3>روابط هامة</h3>
+                    <ul class="contact-info">
+                        <li><a href="#"><i class="fas fa-angle-left"></i> الرحلات البحرية</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> رحلات السفارى</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> رحلات الغواصات</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> اجمل فنادق الغردقة</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h3>اتصل بنا</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> الغردقة - شارع شيراتون، البحر الأحمر</li>
+                        <li><i class="fas fa-phone"></i> +201061061785</li>
+                        <li><i class="fas fa-phone"></i> +201553090535</li>
+                        <li><i class="fas fa-envelope"></i> info@holidays-hurghada.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 رحلات الغردقة. جميع الحقوق محفوظة.</p>
+                <div class="lang-switch">
+                    <select>
+                        <option value="ar" selected>العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Simple JavaScript for interactions -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Back to Top Functionality
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
