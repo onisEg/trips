@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رحلات مصر | حجز رحلات سياحية</title>
+    <title>egTrip | حجز رحلات سياحية</title>
 
     <!-- Meta Description -->
     <meta name="description"
-        content="أفضل موقع لحجز رحلات السياحة في مصر والغردقة. حجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار مع رحلات مصر.">
+        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر والغردقة. احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
 
     <!-- Favicon -->
     <link rel="icon"
@@ -206,10 +206,11 @@
             cursor: pointer;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (Slider) --- */
         .hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/egypt_desert/1920/1080.jpg');
+            height: 60vh;
+            /* Made slightly taller for better view of gatherings */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://picsum.photos/seed/travel_group/1920/1080.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -231,7 +232,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- Booking Card Styles (Not Blog) --- */
+        /* --- Booking Card Styles --- */
         .category-section {
             margin-bottom: 80px;
         }
@@ -274,18 +275,6 @@
             transform: scale(1.1);
         }
 
-        .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
         .card-body {
             padding: 20px;
             display: flex;
@@ -295,10 +284,15 @@
         }
 
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--dark-color);
+            min-height: 50px;
+            /* Align buttons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .trip-price {
@@ -309,12 +303,12 @@
         }
 
         .trip-price span {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #777;
             font-weight: 400;
         }
 
-        .btn-book {
+        .btn-details {
             background-color: var(--primary-color);
             color: white;
             padding: 12px;
@@ -327,7 +321,7 @@
             margin-top: auto;
         }
 
-        .btn-book:hover {
+        .btn-details:hover {
             background-color: var(--dark-color);
         }
 
@@ -357,7 +351,7 @@
             margin-bottom: 20px;
         }
 
-        /* Weather Widget */
+        /* Detailed Weather Widget */
         .weather-widget {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
@@ -368,10 +362,104 @@
             border-color: white;
         }
 
+        .weather-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
         .weather-temp {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin: 10px 0;
+        }
+
+        .weather-icon {
+            font-size: 3rem;
+        }
+
+        .weather-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .wd-item span {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .wd-item strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .forecast-list {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 15px;
+        }
+
+        .forecast-day {
+            text-align: center;
+        }
+
+        .forecast-day div {
+            font-size: 0.9rem;
+        }
+
+        .forecast-day strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Detailed Contact Widget */
+        .contact-list-item {
+            display: flex;
+            align-items: flex-start;
+            /* Changed to flex-start for long text */
+            text-align: right;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .contact-list-item:last-child {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-icon {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            margin-bottom: 2px;
+        }
+
+        .contact-text p {
+            font-size: 0.95rem;
+            color: #555;
         }
 
         /* --- Footer --- */
@@ -443,7 +531,209 @@
             transform: scale(1.1);
         }
 
-        /* Responsive Design */
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-container {
+            background: #fff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 16px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.4rem;
+        }
+
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .modal-body {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .modal-section:last-child {
+            border-bottom: none;
+        }
+
+        .modal-section h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-section h3 i {
+            color: var(--secondary-color);
+        }
+
+        .modal-section ul,
+        .modal-section p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .modal-section ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .modal-section ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .price-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .price-card h4 {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .price-card .amount {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .price-card .sub {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .btn-whatsapp-modal {
+            background-color: var(--whatsapp-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-whatsapp-modal:hover {
+            background-color: #128c7e;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 992px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -471,11 +761,10 @@
                 display: flex;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .modal-header h2 {
+                font-size: 1.1rem;
             }
 
-            /* On mobile, move whatsapp slightly to not cover content if needed, or keep left */
             .whatsapp-float {
                 bottom: 20px;
                 left: 20px;
@@ -496,17 +785,12 @@
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="top-actions">
-                <!-- Language Switcher at Top -->
                 <div class="lang-switch">
                     <select>
                         <option value="ar" selected>العربية</option>
                         <option value="en">English</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                        <option value="ru">Русский</option>
                     </select>
                 </div>
             </div>
@@ -518,8 +802,8 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span>رحلات مصر</span>
+                    <i class="fas fa-plane-departure"></i>
+                    <span>egTrip</span>
                 </div>
                 <div class="nav-links" id="navLinks">
                     <a href="#" class="active">الرئيسية</a>
@@ -535,14 +819,11 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Updated Image) -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>اكتشف جمال مصر معنا</h1>
-            <p>نقدم لك أفضل تجارب السفر والسياحة في الغردقة ومصر بأفضل الأسعار</p>
-            <a href="#sea" class="btn"
-                style="background:var(--secondary-color); color:var(--dark-color); padding:10px 30px; border-radius:50px; font-weight:bold;">تصفح
-                الرحلات</a>
+            <h1>اكتشف مصر مع egTrip</h1>
+            <p>حجز فوري لأفضل الرحلات السياحية في الغردقة ومصر</p>
         </div>
     </section>
 
@@ -558,119 +839,105 @@
                     <h2>الرحلات البحرية</h2>
                 </div>
                 <div class="card-grid">
-                    <!-- Item 1 -->
+                    <!-- Pirates Boat -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة المركب الشراعى البايرتس</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة المركب الشراعى البايرتس')">احجز
-                                الآن</button>
+                            <div class="trip-price">يبدأ من 1800 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('pirates')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
+                    <!-- Dolphin House -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/dolphinhouse/400/300" alt="Dolphin House">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الدولفين هاوس</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة الدولفين هاوس')">احجز الآن</button>
+                            <div class="trip-price">يبدأ من 450 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 3 -->
+                    <!-- Diving -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/diving/400/300" alt="Diving">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الغوص Diving</h3>
-                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة الغوص')">احجز الآن</button>
+                            <div class="trip-price">يبدأ من 2200 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 4 -->
+                    <!-- Hula Hula -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة هولا هولا</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة جزيرة هولا هولا')">احجز الآن</button>
+                            <div class="trip-price">يبدأ من 650 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 5 -->
+                    <!-- Paradise -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/paradise/400/300" alt="Paradise Island">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة جزيرة بارادايس مع رد سى دولفين</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة جزيرة بارادايس')">احجز الآن</button>
+                            <h3 class="card-title">رحلة جزيرة بارادايس</h3>
+                            <div class="trip-price">يبدأ من 750 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 6 -->
+                    <!-- Orange Island -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة جزيرة اورانج Orange Island</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة جزيرة اورانج')">احجز الآن</button>
+                            <h3 class="card-title">رحلة جزيرة اورانج</h3>
+                            <div class="trip-price">يبدأ من 800 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 7 -->
-                    <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/orange2/400/300" alt="Orange Happy Dolphin">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">رحلة جزيرة اورانج مع غواصة هابى دولفين 2×1</h3>
-                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('جزيرة اورانج مع هابى دولفين')">احجز
-                                الآن</button>
-                        </div>
-                    </div>
-
-                    <!-- Item 8 -->
+                    <!-- Parasailing -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/parasailing/400/300" alt="Parasailing">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة الباراشوت parasailing</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة الباراشوت')">احجز الآن</button>
+                            <h3 class="card-title">رحلة الباراشوت</h3>
+                            <div class="trip-price">يبدأ من 600 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
-                    <!-- Item 9 -->
+                    <!-- Water Games -->
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/banana/400/300" alt="Water Games">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">الالعاب المائية الكوادرا والبنانا بوت</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('الالعاب المائية')">احجز الآن</button>
+                            <h3 class="card-title">ألعاب مائية (كوادرا وبوت)</h3>
+                            <div class="trip-price">يبدأ من 300 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Safari Trips Category -->
+            <!-- Safari Trips -->
             <section class="category-section" id="safari">
                 <div class="section-title">
                     <h2>رحلات السفاري</h2>
@@ -681,9 +948,9 @@
                             <img src="https://picsum.photos/seed/supersafari/400/300" alt="Super Safari">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة السوبر سفارى Super Safari</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('رحلة السوبر سفارى')">احجز الآن</button>
+                            <h3 class="card-title">رحلة السوبر سفارى</h3>
+                            <div class="trip-price">يبدأ من 1200 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
@@ -692,9 +959,9 @@
                             <img src="https://picsum.photos/seed/disc5h/400/300" alt="Discovery 5h">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة ديسكفرى سفارى 5 ساعات</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('ديسكفرى سفارى 5 ساعات')">احجز الآن</button>
+                            <h3 class="card-title">ديسكفرى سفارى 5 ساعات</h3>
+                            <div class="trip-price">يبدأ من 1000 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
@@ -703,9 +970,9 @@
                             <img src="https://picsum.photos/seed/disc3h/400/300" alt="Discovery 3h">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة ديسكفرى سفارى 3 ساعات</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('ديسكفرى سفارى 3 ساعات')">احجز الآن</button>
+                            <h3 class="card-title">ديسكفرى سفارى 3 ساعات</h3>
+                            <div class="trip-price">يبدأ من 600 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
 
@@ -714,15 +981,15 @@
                             <img src="https://picsum.photos/seed/motosafari/400/300" alt="Moto Safari">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة موتو سفارى 3 ساعات Moto Safari</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('موتو سفارى 3 ساعات')">احجز الآن</button>
+                            <h3 class="card-title">موتو سفارى 3 ساعات</h3>
+                            <div class="trip-price">يبدأ من 500 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Submarine Trips Category -->
+            <!-- Submarine Trips -->
             <section class="category-section" id="submarine">
                 <div class="section-title">
                     <h2>رحلات الغواصات</h2>
@@ -733,37 +1000,35 @@
                             <img src="https://picsum.photos/seed/panorama/400/300" alt="Panorama Submarine">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة الغواصة بانوراما Panorama Submarine</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('غواصة بانوراما')">احجز الآن</button>
+                            <h3 class="card-title">غواصة بانوراما Panorama</h3>
+                            <div class="trip-price">يبدأ من 1100 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/seawolf/400/300" alt="Panorama Sea Wolf">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة غواصة بانوراما سى وولف خليج مكادى</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('بانوراما سى وولف')">احجز الآن</button>
+                            <h3 class="card-title">بانوراما سى وولف خليج مكادى</h3>
+                            <div class="trip-price">يبدأ من 1300 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/sindbad/400/300" alt="Sindbad Submarine">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة غواصة السندباد Sindbad Submarine</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('غواصة السندباد')">احجز الآن</button>
+                            <h3 class="card-title">غواصة السندباد Sindbad</h3>
+                            <div class="trip-price">يبدأ من 1150 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Varied Trips Category -->
+            <!-- Varied Trips -->
             <section class="category-section" id="varied">
                 <div class="section-title">
                     <h2>رحلات متنوعة</h2>
@@ -774,31 +1039,29 @@
                             <img src="https://picsum.photos/seed/dolphinshow/400/300" alt="Dolphin Show">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة الدولفين شو Dolphin show</h3>
-                            <div class="trip-price">$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('الدولفين شو')">احجز الآن</button>
+                            <h3 class="card-title">الدولفين شو Dolphin show</h3>
+                            <div class="trip-price">يبدأ من 500 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/grandaquarium/400/300" alt="Grand Aquarium">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">جراند اكواريوم الغردقة</h3>
-                            <div class="trip-price">$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('جراند اكواريوم')">احجز الآن</button>
+                            <div class="trip-price">يبدأ من 800 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/jungle/400/300" alt="Jungle Aqua Park">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">رحلة جانجل اكوابارك الغردقة</h3>
-                            <div class="trip-price">$$$$ <span>/ للشخص</span></div>
-                            <button class="btn-book" onclick="openBooking('جانجل اكوابارك')">احجز الآن</button>
+                            <h3 class="card-title">جانجل اكوابارك</h3>
+                            <div class="trip-price">يبدأ من 900 <span>ج.م</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
@@ -806,39 +1069,76 @@
 
         </main>
 
-        <!-- Sidebar -->
+        <!-- Sidebar (Detailed Weather & Contact) -->
         <aside>
             <!-- Weather Widget -->
             <div class="widget weather-widget">
                 <div class="widget-title">حالة الطقس</div>
-                <div style="font-size: 0.9rem;">الغردقة، مصر</div>
-                <div class="weather-temp">70℉</div>
-                <div style="font-size: 0.8rem;">سماء صافية</div>
+                <div class="weather-main">
+                    <div class="weather-temp">70℉</div>
+                    <div class="weather-icon"><i class="fas fa-sun"></i></div>
+                </div>
+                <div class="weather-details-grid">
+                    <div class="wd-item">
+                        <span>الرطوبة</span>
+                        <strong>46%</strong>
+                    </div>
+                    <div class="wd-item">
+                        <span>الرياح</span>
+                        <strong>12 كم/س</strong>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">توقعات الأيام القادمة</p>
+                <div class="forecast-list">
+                    <div class="forecast-day">
+                        <strong>غداً</strong>
+                        <div><i class="fas fa-cloud-sun"></i> 72℉</div>
+                    </div>
+                    <div class="forecast-day">
+                        <strong>بعد غد</strong>
+                        <div><i class="fas fa-sun"></i> 75℉</div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Contact Info Widget -->
+            <!-- Contact Widget -->
             <div class="widget">
                 <div class="widget-title">تواصل معنا</div>
-                <ul class="contact-info" style="text-align: right;">
-                    <li><i class="fas fa-phone"></i> +201061061785</li>
-                    <li><i class="fas fa-phone"></i> +201553090535</li>
-                    <li><i class="fas fa-envelope"></i> info@holidays-hurghada.com</li>
-                </ul>
-            </div>
 
-            <!-- Why Us Widget -->
-            <div class="widget">
-                <div class="widget-title">لماذا تختارنا؟</div>
-                <ul style="text-align: right; font-size: 0.9rem; color: #555;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                            style="color:green; margin-left:5px;"></i> أفضل الأسعار المضمونة</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                            style="color:green; margin-left:5px;"></i> دعم فني 24/7</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                            style="color:green; margin-left:5px;"></i> باصات مكيفة حديثة</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                            style="color:green; margin-left:5px;"></i> مرشدين سياحيين محترفين</li>
-                </ul>
+                <div class="contact-list-item">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-text">
+                        <h4>اتصل بنا</h4>
+                        <p>+20 123 456 7890</p>
+                    </div>
+                </div>
+
+                <div class="contact-list-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-text">
+                        <h4>البريد الإلكتروني</h4>
+                        <p>booking@egtrip.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-list-item">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="contact-text">
+                        <h4>واتساب</h4>
+                        <p>متاح 24/7</p>
+                    </div>
+                </div>
+
+                <div class="contact-list-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-text">
+                        <h4>ساعات العمل</h4>
+                        <p>يومياً: 9 ص - 11 م</p>
+                    </div>
+                </div>
+
+                <button onclick="window.location.href='https://wa.me/201234567890'" class="btn-details"
+                    style="background: var(--whatsapp-color);">تواصل الآن</button>
             </div>
         </aside>
 
@@ -849,8 +1149,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>رحلات مصر</h3>
-                    <p>بوابتك لاستكشاف أجمل الأماكن السياحية في مصر. نضمن لك تجربة لا تنسى مع أفضل الخدمات والأسعار.</p>
+                    <h3>egTrip</h3>
+                    <p>بوابتك لاستكشاف أجمال الأماكن السياحية في مصر. نضمن لك تجربة لا تنسى مع أفضل الخدمات والأسعار.
+                    </p>
                 </div>
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
@@ -860,35 +1161,144 @@
                         <li><a href="#submarine">رحلات الغواصات</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>العنوان</h3>
-                    <p>الغردقة - شارع شيراتون</p>
-                    <p>البحر الأحمر - مصر</p>
-                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 رحلات مصر. جميع الحقوق محفوظة.</p>
+                <p>&copy; 2025 egTrip. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Fixed WhatsApp Button -->
-    <a href="https://wa.me/201061061785" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- MODAL STRUCTURE -->
+    <div id="tripModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modalTitle">تفاصيل الرحلة</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- Content will be injected here by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp-modal" onclick="confirmBooking()">
+                    <i class="fab fa-whatsapp"></i> احجز الآن
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Data for the Detailed Pirates Boat Trip
+        const piratesData = {
+            title: "رحلة المركب الشراعى البايرتس Pirates Boat",
+            description: "اهلا بكم على سطح مركب القراصنة او بايرتس بوت حيث سنقوم بالتمتع برحلة خلابة فى مياه البحر الاحمر بمدينة الغردقة. تتميز رحلة مركب بايرتس الغردقة بالغداء الخاص جدا (سى فود) على سطح المركب لتتمتع بمنظر خلاب اثناء تناول الطعام الشهى.",
+            program: [
+                "سنبدأ رحلتنا باصطحابك من الفندق الذى تقيم به (اختيارى) بواسطة باص مكيف.",
+                "سيقوم المركب بالتوجه الى مناطق الجزر الخاصة بالغردقة للسباحة و السنوركلينج.",
+                "استمتع بالسباحة و السنوركلينج و اكتشاف الشعاب المرجانية الملونة.",
+                "تجهيز الغداء لتناوله مباشرة بعد الانتهاء من السباحة (سى فود بوفيه مفتوح).",
+                "التوجه الى المارينا السياحى ثم التوصيل للفندق."
+            ],
+            prices: [
+                { title: "الفرد البالغ", price: "1800 ج.م", sub: "أكبر من 10 سنة / 70 يورو" },
+                { title: "الطفل", price: "900 ج.م", sub: "من 4 الى 10 سنوات / 35 يورو" },
+                { title: "الرضيع", price: "مجاناً", sub: "اصغر من 4 سنوات" }
+            ],
+            includes: "معدات السباحة (ماسكات، زعاف، ايف جاكت) - الغداء على المركب - المشروبات الساخنة والباردة.",
+            excludes: "الانتقالات (يمكن ترتيبها) - التصوير الفوتوغرافى.",
+            policy: "يمكنك الغاء الرحلة قبل ميعاد انطلاقها ب18 ساعه مع استرداد كامل. اقل من 18 ساعة يرد 75%. اقل من 6 ساعات يرد 50%."
+        };
+
+        const genericData = {
+            title: "تفاصيل الرحلة",
+            description: "استمتع بأفضل تجربة سياحية في الغردقة مع egTrip. تشمل الرحلة نقل، وجبة غداء، ومشروبات. للتفاصيل الدقيقة يرجى التواصل معنا عبر الواتساب.",
+            program: ["الاستقبال من الفندق", "المغادرة نحو موقع الرحلة", "وقت للمرح والاستمتاع", "العودة للفندق"],
+            prices: [{ title: "البالغ", price: "اتصل بنا", sub: "" }, { title: "الطفل", price: "اتصل بنا", sub: "" }],
+            includes: "نقل - وجبة - مشروبات",
+            excludes: "اي شخصي",
+            policy: "سياسة الإلغاء القياسية."
+        };
+
+        function openModal(tripKey) {
+            const modal = document.getElementById('tripModal');
+            const titleEl = document.getElementById('modalTitle');
+            const contentEl = document.getElementById('modalContent');
+
+            let data = (tripKey === 'pirates') ? piratesData : genericData;
+            titleEl.textContent = data.title;
+
+            // Build Content HTML
+            let html = `
+                <div class="modal-section">
+                    <p><strong>${data.description}</strong></p>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-map-signs"></i> برنامج الرحلة</h3>
+                    <ul>
+                        ${data.program.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-money-bill-wave"></i> الأسعار</h3>
+                    <div class="price-grid">
+                        ${data.prices.map(p => `
+                            <div class="price-card">
+                                <h4>${p.title}</h4>
+                                <div class="amount">${p.price}</div>
+                                <div class="sub">${p.sub}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-check-circle"></i> ما يشمله السعر</h3>
+                    <p>${data.includes}</p>
+                    <h3 style="margin-top:15px"><i class="fas fa-times-circle"></i> ما لا يشمله</h3>
+                    <p>${data.excludes}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> سياسة الإلغاء</h3>
+                    <p>${data.policy}</p>
+                </div>
+            `;
+
+            contentEl.innerHTML = html;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('tripModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function confirmBooking() {
+            const title = document.getElementById('modalTitle').textContent;
+            const message = encodeURIComponent(`أريد حجز رحلة: ${title}`);
+            const url = `https://wa.me/201234567890?text=${message}`;
+            window.open(url, '_blank');
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('tripModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
-        }
-
-        function openBooking(tripName) {
-            // In a real app, this would open a modal or redirect
-            // Here we simulate opening WhatsApp for booking
-            const message = encodeURIComponent(`أريد حجز رحلة: ${tripName}`);
-            const whatsappUrl = `https://wa.me/201061061785?text=${message}`;
-            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
