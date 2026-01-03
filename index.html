@@ -8,7 +8,7 @@
 
     <!-- Meta Description -->
     <meta name="description"
-        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر (القاهرة والغردقة). احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
+        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر (القاهرة والغردقة والصحراء البيضاء). احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
 
     <!-- Favicon -->
     <link rel="icon"
@@ -45,6 +45,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--light-bg);
@@ -76,9 +80,21 @@
             padding: 0 20px;
         }
 
+        /* --- Scroll Animation Classes --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             position: relative;
             padding-bottom: 15px;
         }
@@ -107,6 +123,8 @@
             color: var(--white);
             padding: 10px 0;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 1001;
         }
 
         .top-bar .container {
@@ -186,21 +204,6 @@
             color: var(--primary-color);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            right: 0;
-            background-color: var(--secondary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -208,34 +211,93 @@
             cursor: pointer;
         }
 
-        /* --- Hero Section (Slider) --- */
+        /* --- Hero Section (YouTube Background) --- */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://picsum.photos/seed/travel_group/1920/1080.jpg');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             margin-bottom: 60px;
+            overflow: hidden;
+            /* Important for cropping */
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 56.25vw;
+            /* 16:9 ratio height adjusted to 100vh width */
+            height: 100vh;
+            min-width: 177.77vh;
+            /* 16:9 ratio width adjusted to 100vh height */
+            min-height: 56.25vw;
+            transform: translate(-50%, -50%) scale(1.4);
+            /* Scale up to crop YouTube logos/controls */
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 1;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            font-weight: bold;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn:hover {
+            background: white;
+            transform: translateY(-3px);
         }
 
         /* --- Booking Card Styles --- */
         .category-section {
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
         .card-grid {
@@ -256,8 +318,8 @@
         }
 
         .trip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .card-img {
@@ -269,11 +331,33 @@
         .card-img img {
             width: 100%;
             height: 100%;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .trip-card:hover .card-img img {
             transform: scale(1.1);
+        }
+
+        /* Extra Details Icons */
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px 0;
+            font-size: 0.85rem;
+            color: #777;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-item i {
+            color: var(--primary-color);
         }
 
         .card-body {
@@ -296,7 +380,7 @@
         }
 
         .trip-price {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--primary-color);
             font-weight: 800;
             margin-bottom: 20px;
@@ -351,7 +435,7 @@
             margin-bottom: 20px;
         }
 
-        /* Detailed Weather Widget */
+        /* Weather Widget */
         .weather-widget {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
@@ -421,7 +505,7 @@
             margin-bottom: 5px;
         }
 
-        /* Detailed Contact Widget */
+        /* Contact Widget */
         .contact-list-item {
             display: flex;
             align-items: flex-start;
@@ -759,8 +843,8 @@
                 display: flex;
             }
 
-            .modal-header h2 {
-                font-size: 1.1rem;
+            .hero-content h1 {
+                font-size: 2rem;
             }
 
             .whatsapp-float {
@@ -811,6 +895,7 @@
                     <a href="#submarine">رحلات الغواصات</a>
                     <a href="#varied">رحلات متنوعة</a>
                     <a href="#cairo">رحلات القاهرة</a>
+                    <a href="#white-desert">الصحراء البيضاء</a>
                 </div>
                 <div class="mobile-menu-btn" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -819,11 +904,25 @@
         </div>
     </header>
 
-    <!-- Hero Section (Updated Image) -->
+    <!-- Hero Section (YouTube Background) -->
     <section class="hero">
-        <div class="container hero-content">
+        <!-- YouTube Video Background Container -->
+        <div class="hero-video-container">
+            <!-- Parameters: autoplay, mute, loop, playlist, controls=0, modestbranding=1 -->
+            <!-- Video ID Updated to: BapSQFJPMM0 -->
+            <iframe class="hero-video"
+                src="https://www.youtube.com/embed/BapSQFJPMM0?autoplay=1&mute=1&loop=1&playlist=BapSQFJPMM0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content reveal">
             <h1>اكتشف مصر مع egTrip</h1>
-            <p>حجز فوري لأفضل الرحلات السياحية في القاهرة والغردقة</p>
+            <p>أفضل الرحلات السياحية في القاهرة والغردقة والصحراء البيضاء بأسعار لا تقبل المنافسة</p>
+            <button class="hero-btn" onclick="document.getElementById('sea').scrollIntoView()">تصفح العروض</button>
         </div>
     </section>
 
@@ -835,12 +934,19 @@
 
             <!-- Sea Trips Category -->
             <section class="category-section" id="sea">
-                <div class="section-title">
+                <div class="section-title reveal">
                     <h2>الرحلات البحرية</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="trip-card">
-                        <div class="card-img"><img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
+                    <!-- Card 1 -->
+                    <div class="trip-card reveal">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 8 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                            <div class="meta-item"><i class="fas fa-users"></i> عائلة</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة المركب الشراعى البايرتس</h3>
@@ -848,25 +954,50 @@
                             <button class="btn-details" onclick="openModal('pirates')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
-                        <div class="card-img"><img src="https://picsum.photos/seed/dolphinhouse/400/300"
-                                alt="Dolphin House"></div>
+
+                    <!-- Card 2 -->
+                    <div class="trip-card reveal">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/dolphinhouse/400/300" alt="Dolphin House">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 6 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                            <div class="meta-item"><i class="fas fa-water"></i> بحرية</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الدولفين هاوس</h3>
                             <div class="trip-price">يبدأ من 9 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
-                        <div class="card-img"><img src="https://picsum.photos/seed/diving/400/300" alt="Diving"></div>
+
+                    <!-- Card 3 -->
+                    <div class="trip-card reveal">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/diving/400/300" alt="Diving">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                            <div class="meta-item"><i class="fas fa-swimmer"></i> سباحة</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الغوص Diving</h3>
                             <div class="trip-price">يبدأ من 45 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
-                        <div class="card-img"><img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
+
+                    <!-- Card 4 -->
+                    <div class="trip-card reveal">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 7 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
+                            <div class="meta-item"><i class="fas fa-umbrella-beach"></i> استرخاء</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة هولا هولا</h3>
@@ -874,40 +1005,62 @@
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
-                        <div class="card-img"><img src="https://picsum.photos/seed/paradise/400/300"
-                                alt="Paradise Island"></div>
+
+                    <!-- Card 5 -->
+                    <div class="trip-card reveal">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/paradise/400/300" alt="Paradise Island">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 8 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                            <div class="meta-item"><i class="fas fa-umbrella-beach"></i> جزيرة</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة بارادايس</h3>
                             <div class="trip-price">يبدأ من 15 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+
+                    <!-- More Cards (Generic for Sea) -->
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 8 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة اورانج</h3>
-                            <div class="trip-price">يبدأ من 16 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 16 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/parasailing/400/300"
                                 alt="Parasailing"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 1 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الباراشوت</h3>
-                            <div class="trip-price">يبدأ من 12 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 12 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/banana/400/300" alt="Water Games">
                         </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 2 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">ألعاب مائية (كوادرا وبوت)</h3>
-                            <div class="trip-price">يبدأ من 6 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">ألعاب مائية</h3>
+                            <div class="trip-price">يبدأ من 6 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
@@ -915,44 +1068,60 @@
 
             <!-- Safari Trips -->
             <section class="category-section" id="safari">
-                <div class="section-title">
+                <div class="section-title reveal">
                     <h2>رحلات السفاري</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/supersafari/400/300"
                                 alt="Super Safari"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 10 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة السوبر سفارى</h3>
-                            <div class="trip-price">يبدأ من 24 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 24 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/disc5h/400/300" alt="Discovery 5h">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">ديسكفرى سفارى 5 ساعات</h3>
-                            <div class="trip-price">يبدأ من 20 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 20 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/disc3h/400/300" alt="Discovery 3h">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 3 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">ديسكفرى سفارى 3 ساعات</h3>
-                            <div class="trip-price">يبدأ من 12 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 12 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/motosafari/400/300"
                                 alt="Moto Safari"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 3 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">موتو سفارى 3 ساعات</h3>
-                            <div class="trip-price">يبدأ من 10 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 10 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
@@ -960,35 +1129,47 @@
 
             <!-- Submarine Trips -->
             <section class="category-section" id="submarine">
-                <div class="section-title">
+                <div class="section-title reveal">
                     <h2>رحلات الغواصات</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/panorama/400/300"
                                 alt="Panorama Submarine"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 2 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">غواصة بانوراما Panorama</h3>
-                            <div class="trip-price">يبدأ من 22 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 22 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/seawolf/400/300"
                                 alt="Panorama Sea Wolf"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 2 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">بانوراما سى وولف خليج مكادى</h3>
-                            <div class="trip-price">يبدأ من 26 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">بانوراما سى وولف</h3>
+                            <div class="trip-price">يبدأ من 26 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/sindbad/400/300"
                                 alt="Sindbad Submarine"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 2 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">غواصة السندباد Sindbad</h3>
-                            <div class="trip-price">يبدأ من 23 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 23 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
@@ -996,190 +1177,331 @@
 
             <!-- Varied Trips -->
             <section class="category-section" id="varied">
-                <div class="section-title">
+                <div class="section-title reveal">
                     <h2>رحلات متنوعة</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/dolphinshow/400/300"
                                 alt="Dolphin Show"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 3 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">الدولفين شو Dolphin show</h3>
-                            <div class="trip-price">يبدأ من 10 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 10 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/grandaquarium/400/300"
                                 alt="Grand Aquarium"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 4 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">جراند اكواريوم الغردقة</h3>
-                            <div class="trip-price">يبدأ من 16 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 16 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/jungle/400/300"
                                 alt="Jungle Aqua Park"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 8 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">جانجل اكوابارك</h3>
-                            <div class="trip-price">يبدأ من 18 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 18 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Cairo Tours Section (NEW) -->
+            <!-- Cairo Tours Section -->
             <section class="category-section" id="cairo">
-                <div class="section-title">
+                <div class="section-title reveal">
                     <h2>رحلات وجولات القاهرة</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/alexandria/400/300" alt="Alexandria">
+                        </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 12 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">الإسكندرية من القاهرة</h3>
-                            <div class="trip-price">يبدأ من 40 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 40 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/nile/400/300" alt="Nile Ship"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 2 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">5 ستار نايل شيب</h3>
-                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/pharaonic/400/300"
                                 alt="Pharaonic Village"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 4 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">القرية الفرعونية</h3>
-                            <div class="trip-price">يبدأ من 25 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 25 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/cairotour/400/300"
                                 alt="Cairo City Tour"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 6 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">جولة في مدينة القاهرة</h3>
-                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/stcatherine/400/300"
                                 alt="St Catherine"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 24 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">دير كاترين من القاهرة</h3>
-                            <div class="trip-price">يبدأ من 90 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 90 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/mountm/400/300" alt="Mount Moses">
                         </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 24 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">جبل موسى ودير كاترين من القاهرة</h3>
-                            <div class="trip-price">يبدأ من 95 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">جبل موسى ودير كاترين</h3>
+                            <div class="trip-price">يبدأ من 95 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/dinner/400/300"
                                 alt="Pyramids Dinner"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 3 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رباعية عند الأهرامات</h3>
-                            <div class="trip-price">يبدأ من 60 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 60 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/luxorair/400/300" alt="Luxor Flight">
                         </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 12 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">الأقصر مع الطيران من القاهرة</h3>
-                            <div class="trip-price">يبدأ من 180 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">الأقصر مع الطيران</h3>
+                            <div class="trip-price">يبدأ من 180 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/luxor/400/300" alt="Luxor"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 18 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة إلى الأقصر</h3>
-                            <div class="trip-price">يبدأ من 60 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 60 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/memphis/400/300" alt="Memphis"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">ممفيس وخطوة الهرم</h3>
-                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/gizapyramids/400/300"
                                 alt="Giza Pyramids"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 4 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">أهرامات الجيزة</h3>
-                            <div class="trip-price">يبدأ من 25 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 25 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/museum/400/300" alt="Museum"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">المتحف المصري بقلعة صلاح الدين</h3>
-                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">المتحف المصري والقلعة</h3>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/bazaar/400/300" alt="Bazaar"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 3 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.6</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">بازار ، داس ألت القاهرة</h3>
-                            <div class="trip-price">يبدأ من 20 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">بازار وداس ألت القاهرة</h3>
+                            <div class="trip-price">يبدأ من 20 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/dahshur/400/300" alt="Dahshur"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">دهشور وممفيس</h3>
-                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/cairoold/400/300" alt="Old Cairo">
                         </div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 6 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">اليهودية والقبطية والإسلامية في القاهرة</h3>
-                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">اليهودية والقبطية والإسلامية</h3>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/layover/400/300" alt="Layover"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 5 ساعات</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.5</div>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">توقف في القاهرة من مطار القاهرة</h3>
-                            <div class="trip-price">يبدأ من 40 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <h3 class="card-title">توقف في القاهرة من المطار</h3>
+                            <div class="trip-price">يبدأ من 40 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-                    <div class="trip-card">
+                    <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/soundlight/400/300"
                                 alt="Sound and Light"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> 1 ساعة</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">الصوت والضوء</h3>
-                            <div class="trip-price">يبدأ من 15 <span>$</span></div>
-                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                            <div class="trip-price">يبدأ من 15 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- White Desert Section (NEW) -->
+            <section class="category-section" id="white-desert">
+                <div class="section-title reveal">
+                    <h2>رحلة الصحراء البيضاء</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/whitedesert/400/300"
+                                alt="White Desert Safari"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">سفاري الصحراء البيضاء (برحلة ليلية)</h3>
+                            <div class="trip-price">يبدأ من 90 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/bahariya/400/300"
+                                alt="Bahariya Oasis"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة واحة البحيرة والصحراء</h3>
+                            <div class="trip-price">يبدأ من 75 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/whitewonder/400/300"
+                                alt="White Wonder"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة يومية للصحراء البيضاء</h3>
+                            <div class="trip-price">يبدأ من 50 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/blackdesert/400/300"
+                                alt="Black and White Desert"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">الصحراء السوداء والبيضاء</h3>
+                            <div class="trip-price">يبدأ من 110 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
                 </div>
@@ -1187,50 +1509,38 @@
 
         </main>
 
-        <!-- Sidebar (Detailed Weather & Contact) -->
+        <!-- Sidebar -->
         <aside>
-            <!-- Weather Widget -->
-            <div class="widget weather-widget">
+            <div class="widget weather-widget reveal">
                 <div class="widget-title">حالة الطقس</div>
                 <div class="weather-main">
                     <div class="weather-temp">70℉</div>
                     <div class="weather-icon"><i class="fas fa-sun"></i></div>
                 </div>
                 <div class="weather-details-grid">
-                    <div class="wd-item">
-                        <span>الرطوبة</span>
-                        <strong>46%</strong>
-                    </div>
-                    <div class="wd-item">
-                        <span>الرياح</span>
-                        <strong>12 كم/س</strong>
-                    </div>
+                    <div class="wd-item"><span>الرطوبة</span><strong>46%</strong></div>
+                    <div class="wd-item"><span>الرياح</span><strong>12 كم/س</strong></div>
                 </div>
                 <p style="font-size: 0.9rem; margin-bottom: 10px;">توقعات الأيام القادمة</p>
                 <div class="forecast-list">
-                    <div class="forecast-day">
-                        <strong>غداً</strong>
+                    <div class="forecast-day"><strong>غداً</strong>
                         <div><i class="fas fa-cloud-sun"></i> 72℉</div>
                     </div>
-                    <div class="forecast-day">
-                        <strong>بعد غد</strong>
+                    <div class="forecast-day"><strong>بعد غد</strong>
                         <div><i class="fas fa-sun"></i> 75℉</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Contact Widget -->
-            <div class="widget">
+            <div class="widget reveal">
                 <div class="widget-title">تواصل معنا</div>
-
                 <div class="contact-list-item">
                     <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                     <div class="contact-text">
                         <h4>اتصل بنا</h4>
-                        <p>+20 123 456 7890</p>
+                        <p>+34 666 281 390</p>
                     </div>
                 </div>
-
                 <div class="contact-list-item">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-text">
@@ -1238,7 +1548,6 @@
                         <p>booking@egtrip.com</p>
                     </div>
                 </div>
-
                 <div class="contact-list-item">
                     <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="contact-text">
@@ -1246,7 +1555,6 @@
                         <p>متاح 24/7</p>
                     </div>
                 </div>
-
                 <button onclick="window.location.href='https://wa.me/34666281390'" class="btn-details"
                     style="background: var(--whatsapp-color);">تواصل الآن</button>
             </div>
@@ -1254,7 +1562,7 @@
 
     </div>
 
-    <!-- Footer (Updated with Cairo & Hurghada Addresses) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1267,27 +1575,17 @@
                     <h3>روابط سريعة</h3>
                     <ul class="contact-info">
                         <li><a href="#sea">الرحلات البحرية</a></li>
-                        <li><a href="#safari">رحلات السفاري</a></li>
+                        <li><a href="#white-desert">الصحراء البيضاء</a></li>
                         <li><a href="#cairo">رحلات القاهرة</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>العناوين</h3>
                     <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>القاهرة</strong><br>
-                                <span style="font-size:0.9rem; color:#ccc;">وسط البلد، شارع طلعت حرب</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>الغردقة</strong><br>
-                                <span style="font-size:0.9rem; color:#ccc;">شارع شيراتون، البحر الأحمر</span>
-                            </div>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><strong>القاهرة</strong><br><span
+                                style="font-size:0.9rem; color:#ccc;">وسط البلد، شارع طلعت حرب</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i><strong>الغردقة</strong><br><span
+                                style="font-size:0.9rem; color:#ccc;">شارع شيراتون، البحر الأحمر</span></li>
                     </ul>
                 </div>
             </div>
@@ -1297,7 +1595,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
+    <!-- WhatsApp Float (Updated Number) -->
     <a href="https://wa.me/34666281390" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1309,9 +1607,7 @@
                 <h2 id="modalTitle">تفاصيل الرحلة</h2>
                 <button class="close-modal" onclick="closeModal()">&times;</button>
             </div>
-            <div class="modal-body" id="modalContent">
-                <!-- Content will be injected here by JS -->
-            </div>
+            <div class="modal-body" id="modalContent"></div>
             <div class="modal-footer">
                 <button class="btn-whatsapp-modal" onclick="confirmBooking()">
                     <i class="fab fa-whatsapp"></i> احجز الآن
@@ -1321,6 +1617,27 @@
     </div>
 
     <script>
+        // Scroll Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Modal Logic
         const piratesData = {
             title: "رحلة المركب الشراعى البايرتس Pirates Boat",
             description: "اهلا بكم على سطح مركب القراصنة او بايرتس بوت حيث سنقوم بالتمتع برحلة خلابة فى مياه البحر الاحمر بمدينة الغردقة.",
