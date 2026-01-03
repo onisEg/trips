@@ -8,7 +8,7 @@
 
     <!-- Meta Description -->
     <meta name="description"
-        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر والغردقة. احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
+        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر (القاهرة والغردقة). احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
 
     <!-- Favicon -->
     <link rel="icon"
@@ -170,7 +170,9 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -808,6 +810,7 @@
                     <a href="#safari">رحلات السفاري</a>
                     <a href="#submarine">رحلات الغواصات</a>
                     <a href="#varied">رحلات متنوعة</a>
+                    <a href="#cairo">رحلات القاهرة</a>
                 </div>
                 <div class="mobile-menu-btn" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -820,7 +823,7 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>اكتشف مصر مع egTrip</h1>
-            <p>حجز فوري لأفضل الرحلات السياحية في الغردقة ومصر</p>
+            <p>حجز فوري لأفضل الرحلات السياحية في القاهرة والغردقة</p>
         </div>
     </section>
 
@@ -836,10 +839,8 @@
                     <h2>الرحلات البحرية</h2>
                 </div>
                 <div class="card-grid">
-                    <!-- Pirates Boat -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
+                        <div class="card-img"><img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة المركب الشراعى البايرتس</h3>
@@ -847,35 +848,25 @@
                             <button class="btn-details" onclick="openModal('pirates')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Dolphin House -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/dolphinhouse/400/300" alt="Dolphin House">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/dolphinhouse/400/300"
+                                alt="Dolphin House"></div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الدولفين هاوس</h3>
                             <div class="trip-price">يبدأ من 9 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Diving -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/diving/400/300" alt="Diving">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/diving/400/300" alt="Diving"></div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الغوص Diving</h3>
                             <div class="trip-price">يبدأ من 45 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Hula Hula -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
+                        <div class="card-img"><img src="https://picsum.photos/seed/hulahula/400/300" alt="Hula Hula">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة هولا هولا</h3>
@@ -883,23 +874,17 @@
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Paradise -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/paradise/400/300" alt="Paradise Island">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/paradise/400/300"
+                                alt="Paradise Island"></div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة بارادايس</h3>
                             <div class="trip-price">يبدأ من 15 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Orange Island -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
+                        <div class="card-img"><img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة جزيرة اورانج</h3>
@@ -907,23 +892,17 @@
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Parasailing -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/parasailing/400/300" alt="Parasailing">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/parasailing/400/300"
+                                alt="Parasailing"></div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة الباراشوت</h3>
                             <div class="trip-price">يبدأ من 12 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
-                    <!-- Water Games -->
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/banana/400/300" alt="Water Games">
+                        <div class="card-img"><img src="https://picsum.photos/seed/banana/400/300" alt="Water Games">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">ألعاب مائية (كوادرا وبوت)</h3>
@@ -941,19 +920,16 @@
                 </div>
                 <div class="card-grid">
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/supersafari/400/300" alt="Super Safari">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/supersafari/400/300"
+                                alt="Super Safari"></div>
                         <div class="card-body">
                             <h3 class="card-title">رحلة السوبر سفارى</h3>
                             <div class="trip-price">يبدأ من 24 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/disc5h/400/300" alt="Discovery 5h">
+                        <div class="card-img"><img src="https://picsum.photos/seed/disc5h/400/300" alt="Discovery 5h">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">ديسكفرى سفارى 5 ساعات</h3>
@@ -961,10 +937,8 @@
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/disc3h/400/300" alt="Discovery 3h">
+                        <div class="card-img"><img src="https://picsum.photos/seed/disc3h/400/300" alt="Discovery 3h">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">ديسكفرى سفارى 3 ساعات</h3>
@@ -972,11 +946,9 @@
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
-
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/motosafari/400/300" alt="Moto Safari">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/motosafari/400/300"
+                                alt="Moto Safari"></div>
                         <div class="card-body">
                             <h3 class="card-title">موتو سفارى 3 ساعات</h3>
                             <div class="trip-price">يبدأ من 10 <span>$</span></div>
@@ -993,9 +965,8 @@
                 </div>
                 <div class="card-grid">
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/panorama/400/300" alt="Panorama Submarine">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/panorama/400/300"
+                                alt="Panorama Submarine"></div>
                         <div class="card-body">
                             <h3 class="card-title">غواصة بانوراما Panorama</h3>
                             <div class="trip-price">يبدأ من 22 <span>$</span></div>
@@ -1003,9 +974,8 @@
                         </div>
                     </div>
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/seawolf/400/300" alt="Panorama Sea Wolf">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/seawolf/400/300"
+                                alt="Panorama Sea Wolf"></div>
                         <div class="card-body">
                             <h3 class="card-title">بانوراما سى وولف خليج مكادى</h3>
                             <div class="trip-price">يبدأ من 26 <span>$</span></div>
@@ -1013,9 +983,8 @@
                         </div>
                     </div>
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/sindbad/400/300" alt="Sindbad Submarine">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/sindbad/400/300"
+                                alt="Sindbad Submarine"></div>
                         <div class="card-body">
                             <h3 class="card-title">غواصة السندباد Sindbad</h3>
                             <div class="trip-price">يبدأ من 23 <span>$</span></div>
@@ -1032,9 +1001,8 @@
                 </div>
                 <div class="card-grid">
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/dolphinshow/400/300" alt="Dolphin Show">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/dolphinshow/400/300"
+                                alt="Dolphin Show"></div>
                         <div class="card-body">
                             <h3 class="card-title">الدولفين شو Dolphin show</h3>
                             <div class="trip-price">يبدأ من 10 <span>$</span></div>
@@ -1042,9 +1010,8 @@
                         </div>
                     </div>
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/grandaquarium/400/300" alt="Grand Aquarium">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/grandaquarium/400/300"
+                                alt="Grand Aquarium"></div>
                         <div class="card-body">
                             <h3 class="card-title">جراند اكواريوم الغردقة</h3>
                             <div class="trip-price">يبدأ من 16 <span>$</span></div>
@@ -1052,12 +1019,166 @@
                         </div>
                     </div>
                     <div class="trip-card">
-                        <div class="card-img">
-                            <img src="https://picsum.photos/seed/jungle/400/300" alt="Jungle Aqua Park">
-                        </div>
+                        <div class="card-img"><img src="https://picsum.photos/seed/jungle/400/300"
+                                alt="Jungle Aqua Park"></div>
                         <div class="card-body">
                             <h3 class="card-title">جانجل اكوابارك</h3>
                             <div class="trip-price">يبدأ من 18 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cairo Tours Section (NEW) -->
+            <section class="category-section" id="cairo">
+                <div class="section-title">
+                    <h2>رحلات وجولات القاهرة</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/alexandria/400/300" alt="Alexandria">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">الإسكندرية من القاهرة</h3>
+                            <div class="trip-price">يبدأ من 40 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/nile/400/300" alt="Nile Ship"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">5 ستار نايل شيب</h3>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/pharaonic/400/300"
+                                alt="Pharaonic Village"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">القرية الفرعونية</h3>
+                            <div class="trip-price">يبدأ من 25 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/cairotour/400/300"
+                                alt="Cairo City Tour"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">جولة في مدينة القاهرة</h3>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/stcatherine/400/300"
+                                alt="St Catherine"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">دير كاترين من القاهرة</h3>
+                            <div class="trip-price">يبدأ من 90 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/mountm/400/300" alt="Mount Moses">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">جبل موسى ودير كاترين من القاهرة</h3>
+                            <div class="trip-price">يبدأ من 95 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/dinner/400/300"
+                                alt="Pyramids Dinner"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">رباعية عند الأهرامات</h3>
+                            <div class="trip-price">يبدأ من 60 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/luxorair/400/300" alt="Luxor Flight">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">الأقصر مع الطيران من القاهرة</h3>
+                            <div class="trip-price">يبدأ من 180 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/luxor/400/300" alt="Luxor"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة إلى الأقصر</h3>
+                            <div class="trip-price">يبدأ من 60 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/memphis/400/300" alt="Memphis"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">ممفيس وخطوة الهرم</h3>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/gizapyramids/400/300"
+                                alt="Giza Pyramids"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">أهرامات الجيزة</h3>
+                            <div class="trip-price">يبدأ من 25 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/museum/400/300" alt="Museum"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">المتحف المصري بقلعة صلاح الدين</h3>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/bazaar/400/300" alt="Bazaar"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">بازار ، داس ألت القاهرة</h3>
+                            <div class="trip-price">يبدأ من 20 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/dahshur/400/300" alt="Dahshur"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">دهشور وممفيس</h3>
+                            <div class="trip-price">يبدأ من 35 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/cairoold/400/300" alt="Old Cairo">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">اليهودية والقبطية والإسلامية في القاهرة</h3>
+                            <div class="trip-price">يبدأ من 30 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/layover/400/300" alt="Layover"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">توقف في القاهرة من مطار القاهرة</h3>
+                            <div class="trip-price">يبدأ من 40 <span>$</span></div>
+                            <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <div class="card-img"><img src="https://picsum.photos/seed/soundlight/400/300"
+                                alt="Sound and Light"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">الصوت والضوء</h3>
+                            <div class="trip-price">يبدأ من 15 <span>$</span></div>
                             <button class="btn-details" onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
@@ -1141,7 +1262,7 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (Updated with Cairo & Hurghada Addresses) -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1155,7 +1276,26 @@
                     <ul class="contact-info">
                         <li><a href="#sea">الرحلات البحرية</a></li>
                         <li><a href="#safari">رحلات السفاري</a></li>
-                        <li><a href="#submarine">رحلات الغواصات</a></li>
+                        <li><a href="#cairo">رحلات القاهرة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>العناوين</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>القاهرة</strong><br>
+                                <span style="font-size:0.9rem; color:#ccc;">وسط البلد، شارع طلعت حرب</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>الغردقة</strong><br>
+                                <span style="font-size:0.9rem; color:#ccc;">شارع شيراتون، البحر الأحمر</span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1189,30 +1329,19 @@
     </div>
 
     <script>
-        // Data for the Detailed Pirates Boat Trip
         const piratesData = {
             title: "رحلة المركب الشراعى البايرتس Pirates Boat",
-            description: "اهلا بكم على سطح مركب القراصنة او بايرتس بوت حيث سنقوم بالتمتع برحلة خلابة فى مياه البحر الاحمر بمدينة الغردقة. تتميز رحلة مركب بايرتس الغردقة بالغداء الخاص جدا (سى فود) على سطح المركب لتتمتع بمنظر خلاب اثناء تناول الطعام الشهى.",
-            program: [
-                "سنبدأ رحلتنا باصطحابك من الفندق الذى تقيم به (اختيارى) بواسطة باص مكيف.",
-                "سيقوم المركب بالتوجه الى مناطق الجزر الخاصة بالغردقة للسباحة و السنوركلينج.",
-                "استمتع بالسباحة و السنوركلينج و اكتشاف الشعاب المرجانية الملونة.",
-                "تجهيز الغداء لتناوله مباشرة بعد الانتهاء من السباحة (سى فود بوفيه مفتوح).",
-                "التوجه الى المارينا السياحى ثم التوصيل للفندق."
-            ],
-            prices: [
-                { title: "الفرد البالغ", price: "$35", sub: "أكبر من 10 سنة" },
-                { title: "الطفل", price: "$18", sub: "من 4 الى 10 سنوات" },
-                { title: "الرضيع", price: "مجاناً", sub: "اصغر من 4 سنوات" }
-            ],
-            includes: "معدات السباحة (ماسكات، زعاف، ايف جاكت) - الغداء على المركب - المشروبات الساخنة والباردة.",
-            excludes: "الانتقالات (يمكن ترتيبها) - التصوير الفوتوغرافى.",
-            policy: "يمكنك الغاء الرحلة قبل ميعاد انطلاقها ب18 ساعه مع استرداد كامل. اقل من 18 ساعة يرد 75%. اقل من 6 ساعات يرد 50%."
+            description: "اهلا بكم على سطح مركب القراصنة او بايرتس بوت حيث سنقوم بالتمتع برحلة خلابة فى مياه البحر الاحمر بمدينة الغردقة.",
+            program: ["سنبدأ رحلتنا باصطحابك من الفندق.", "سيقوم المركب بالتوجه الى مناطق الجزر.", "السباحة و السنوركلينج.", "تجهيز الغداء وتناوله.", "التوجه للمارينا والتوصيل."],
+            prices: [{ title: "الفرد البالغ", price: "$35", sub: "أكبر من 10 سنة" }, { title: "الطفل", price: "$18", sub: "من 4 الى 10 سنوات" }],
+            includes: "معدات السباحة - الغداء - المشروبات.",
+            excludes: "الانتقالات - التصوير الفوتوغرافى.",
+            policy: "سياسة الإلغاء القياسية."
         };
 
         const genericData = {
             title: "تفاصيل الرحلة",
-            description: "استمتع بأفضل تجربة سياحية في الغردقة مع egTrip. تشمل الرحلة نقل، وجبة غداء، ومشروبات. للتفاصيل الدقيقة يرجى التواصل معنا عبر الواتساب.",
+            description: "استمتع بأفضل تجربة سياحية مع egTrip. تشمل الرحلة نقل، وجبة غداء، ومشروبات.",
             program: ["الاستقبال من الفندق", "المغادرة نحو موقع الرحلة", "وقت للمرح والاستمتاع", "العودة للفندق"],
             prices: [{ title: "البالغ", price: "اتصل بنا", sub: "" }, { title: "الطفل", price: "اتصل بنا", sub: "" }],
             includes: "نقل - وجبة - مشروبات",
@@ -1228,19 +1357,16 @@
             let data = (tripKey === 'pirates') ? piratesData : genericData;
             titleEl.textContent = data.title;
 
-            // Build Content HTML
             let html = `
                 <div class="modal-section">
                     <p><strong>${data.description}</strong></p>
                 </div>
-
                 <div class="modal-section">
                     <h3><i class="fas fa-map-signs"></i> برنامج الرحلة</h3>
                     <ul>
                         ${data.program.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                 </div>
-
                 <div class="modal-section">
                     <h3><i class="fas fa-money-bill-wave"></i> الأسعار</h3>
                     <div class="price-grid">
@@ -1253,28 +1379,24 @@
                         `).join('')}
                     </div>
                 </div>
-
                 <div class="modal-section">
                     <h3><i class="fas fa-check-circle"></i> ما يشمله السعر</h3>
                     <p>${data.includes}</p>
                     <h3 style="margin-top:15px"><i class="fas fa-times-circle"></i> ما لا يشمله</h3>
                     <p>${data.excludes}</p>
                 </div>
-
                 <div class="modal-section">
                     <h3><i class="fas fa-exclamation-triangle"></i> سياسة الإلغاء</h3>
                     <p>${data.policy}</p>
                 </div>
             `;
-
             contentEl.innerHTML = html;
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            const modal = document.getElementById('tripModal');
-            modal.classList.remove('active');
+            document.getElementById('tripModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
@@ -1285,17 +1407,12 @@
             window.open(url, '_blank');
         }
 
-        // Close modal if clicking outside
         window.onclick = function (event) {
-            const modal = document.getElementById('tripModal');
-            if (event.target == modal) {
-                closeModal();
-            }
+            if (event.target == document.getElementById('tripModal')) closeModal();
         }
 
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
         }
     </script>
 </body>
