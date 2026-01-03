@@ -8,7 +8,7 @@
 
     <!-- Meta Description -->
     <meta name="description"
-        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر (القاهرة والغردقة والصحراء البيضاء). احجز رحلات بحرية، سفاري، وغواصات بأفضل الأسعار.">
+        content="egTrip - أفضل منصة لحجز رحلات السياحة في مصر (القاهرة والغردقة والصحراء). احجز رحلات سفاري، بحرية، وغواصات بأفضل الأسعار.">
 
     <!-- Favicon -->
     <link rel="icon"
@@ -202,6 +202,21 @@
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
@@ -891,11 +906,10 @@
                 <div class="nav-links" id="navLinks">
                     <a href="#" class="active">الرئيسية</a>
                     <a href="#sea">الرحلات البحرية</a>
-                    <a href="#safari">رحلات السفاري</a>
+                    <a href="#safari">رحلات السفاري والصحراء</a>
                     <a href="#submarine">رحلات الغواصات</a>
                     <a href="#varied">رحلات متنوعة</a>
                     <a href="#cairo">رحلات القاهرة</a>
-                    <a href="#white-desert">الصحراء البيضاء</a>
                 </div>
                 <div class="mobile-menu-btn" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -909,7 +923,7 @@
         <!-- YouTube Video Background Container -->
         <div class="hero-video-container">
             <!-- Parameters: autoplay, mute, loop, playlist, controls=0, modestbranding=1 -->
-            <!-- Video ID Updated to: BapSQFJPMM0 -->
+            <!-- Video ID: BapSQFJPMM0 -->
             <iframe class="hero-video"
                 src="https://www.youtube.com/embed/BapSQFJPMM0?autoplay=1&mute=1&loop=1&playlist=BapSQFJPMM0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
                 frameborder="0"
@@ -921,7 +935,7 @@
 
         <div class="container hero-content reveal">
             <h1>اكتشف مصر مع egTrip</h1>
-            <p>أفضل الرحلات السياحية في القاهرة والغردقة والصحراء البيضاء بأسعار لا تقبل المنافسة</p>
+            <p>أفضل الرحلات السياحية في القاهرة والغردقة والصحراء بأسعار لا تقبل المنافسة</p>
             <button class="hero-btn" onclick="document.getElementById('sea').scrollIntoView()">تصفح العروض</button>
         </div>
     </section>
@@ -943,6 +957,7 @@
                         <div class="card-img">
                             <img src="https://picsum.photos/seed/pirates/400/300" alt="Pirates Boat">
                         </div>
+                        <!-- Extra Details Icons -->
                         <div class="card-meta">
                             <div class="meta-item"><i class="far fa-clock"></i> 8 ساعات</div>
                             <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
@@ -1023,7 +1038,7 @@
                         </div>
                     </div>
 
-                    <!-- More Cards (Generic for Sea) -->
+                    <!-- More Generic Cards for Sea Trips -->
                     <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/orange/400/300" alt="Orange Island">
                         </div>
@@ -1066,12 +1081,13 @@
                 </div>
             </section>
 
-            <!-- Safari Trips -->
+            <!-- Safari Trips (Includes White Desert) -->
             <section class="category-section" id="safari">
                 <div class="section-title reveal">
-                    <h2>رحلات السفاري</h2>
+                    <h2>رحلات السفاري والصحراء البيضاء</h2>
                 </div>
                 <div class="card-grid">
+                    <!-- Standard Safari -->
                     <div class="trip-card reveal">
                         <div class="card-img"><img src="https://picsum.photos/seed/supersafari/400/300"
                                 alt="Super Safari"></div>
@@ -1121,6 +1137,60 @@
                         <div class="card-body">
                             <h3 class="card-title">موتو سفارى 3 ساعات</h3>
                             <div class="trip-price">يبدأ من 10 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+
+                    <!-- White Desert Cards (Moved Here) -->
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/whitedesert/400/300"
+                                alt="White Desert Safari"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">سفاري الصحراء البيضاء (برحلة ليلية)</h3>
+                            <div class="trip-price">يبدأ من 90 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/bahariya/400/300"
+                                alt="Bahariya Oasis"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة واحة البحيرة والصحراء</h3>
+                            <div class="trip-price">يبدأ من 75 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/whitewonder/400/300"
+                                alt="White Wonder"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">رحلة يومية للصحراء البيضاء</h3>
+                            <div class="trip-price">يبدأ من 50 <span>$</span></div><button class="btn-details"
+                                onclick="openModal('generic')">التفاصيل</button>
+                        </div>
+                    </div>
+                    <div class="trip-card reveal">
+                        <div class="card-img"><img src="https://picsum.photos/seed/blackdesert/400/300"
+                                alt="Black and White Desert"></div>
+                        <div class="card-meta">
+                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">الصحراء السوداء والبيضاء</h3>
+                            <div class="trip-price">يبدأ من 110 <span>$</span></div><button class="btn-details"
                                 onclick="openModal('generic')">التفاصيل</button>
                         </div>
                     </div>
@@ -1446,67 +1516,6 @@
                 </div>
             </section>
 
-            <!-- White Desert Section (NEW) -->
-            <section class="category-section" id="white-desert">
-                <div class="section-title reveal">
-                    <h2>رحلة الصحراء البيضاء</h2>
-                </div>
-                <div class="card-grid">
-                    <div class="trip-card reveal">
-                        <div class="card-img"><img src="https://picsum.photos/seed/whitedesert/400/300"
-                                alt="White Desert Safari"></div>
-                        <div class="card-meta">
-                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
-                            <div class="meta-item"><i class="fas fa-star"></i> 5.0</div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">سفاري الصحراء البيضاء (برحلة ليلية)</h3>
-                            <div class="trip-price">يبدأ من 90 <span>$</span></div><button class="btn-details"
-                                onclick="openModal('generic')">التفاصيل</button>
-                        </div>
-                    </div>
-                    <div class="trip-card reveal">
-                        <div class="card-img"><img src="https://picsum.photos/seed/bahariya/400/300"
-                                alt="Bahariya Oasis"></div>
-                        <div class="card-meta">
-                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
-                            <div class="meta-item"><i class="fas fa-star"></i> 4.8</div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">رحلة واحة البحيرة والصحراء</h3>
-                            <div class="trip-price">يبدأ من 75 <span>$</span></div><button class="btn-details"
-                                onclick="openModal('generic')">التفاصيل</button>
-                        </div>
-                    </div>
-                    <div class="trip-card reveal">
-                        <div class="card-img"><img src="https://picsum.photos/seed/whitewonder/400/300"
-                                alt="White Wonder"></div>
-                        <div class="card-meta">
-                            <div class="meta-item"><i class="far fa-clock"></i> يوم واحد</div>
-                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">رحلة يومية للصحراء البيضاء</h3>
-                            <div class="trip-price">يبدأ من 50 <span>$</span></div><button class="btn-details"
-                                onclick="openModal('generic')">التفاصيل</button>
-                        </div>
-                    </div>
-                    <div class="trip-card reveal">
-                        <div class="card-img"><img src="https://picsum.photos/seed/blackdesert/400/300"
-                                alt="Black and White Desert"></div>
-                        <div class="card-meta">
-                            <div class="meta-item"><i class="far fa-clock"></i> يومين</div>
-                            <div class="meta-item"><i class="fas fa-star"></i> 4.9</div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">الصحراء السوداء والبيضاء</h3>
-                            <div class="trip-price">يبدأ من 110 <span>$</span></div><button class="btn-details"
-                                onclick="openModal('generic')">التفاصيل</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
         </main>
 
         <!-- Sidebar -->
@@ -1575,7 +1584,7 @@
                     <h3>روابط سريعة</h3>
                     <ul class="contact-info">
                         <li><a href="#sea">الرحلات البحرية</a></li>
-                        <li><a href="#white-desert">الصحراء البيضاء</a></li>
+                        <li><a href="#safari">رحلات السفاري والصحراء</a></li>
                         <li><a href="#cairo">رحلات القاهرة</a></li>
                     </ul>
                 </div>
